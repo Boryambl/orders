@@ -1,0 +1,18 @@
+version: "3.6"
+
+services:
+  postgres_db:
+    image: postgres:12.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=orders
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=nimda
+      - POSTGRES_ROOT_PASSWORD=nimda
+    ports:
+      - "5439:5432"
+    shm_size: 4g
+    volumes:
+      - orders:/var/lib/postgresql/data
+volumes:
+  orders:
